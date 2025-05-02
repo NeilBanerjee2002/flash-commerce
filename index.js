@@ -46,7 +46,7 @@ for (let product of products){
 
     const cardButton = document.createElement("div");
     cardButton.classList.add("cta-btn");
-    cardButton.innerHTML = `<button class="button btn-primary btn-icon cart-btn d-flex                          align-center justify-center gap cursor btn-margin">
+    cardButton.innerHTML = `<button class="button btn-primary btn-icon cart-btn d-flex                       align-center justify-center gap cursor btn-margin">
                   <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;"> 
                     Add To Cart
                   </button>`
