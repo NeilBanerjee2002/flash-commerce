@@ -31,14 +31,27 @@ for (let product of products){
     const cardDescription = document.createElement("div");
     cardDescription.classList.add("card-description");
     cardDescription.innerHTML = `<p class="card-des">${product.name}</p>
-                      <p class="card-price">
+                      <p class="card-price d-flex align-end gap-sm">
                      Rs. ${product.newPrice}
                         <span class="price-strike-through">Rs. ${product.oldPrice}</span>
                      <span class="discount">(${product.discount} % OFF)</span>
                   </p>`
     cardDetails.appendChild(cardDescription);
 
-    
+    const cardRating = document.createElement("div");
+    cardRating.classList.add("card-rating", "d-flex", "align-center", "gap-sm");
+    cardRating.innerHTML = `<span class="rating">${product.rating}</span>
+                            <i class="fa-solid fa-star star"></i>`
+    cardDetails.appendChild(cardRating);
+
+    const cardButton = document.createElement("div");
+    cardButton.classList.add("cta-btn");
+    cardButton.innerHTML = `<button class="button btn-primary btn-icon cart-btn d-flex                          align-center justify-center gap cursor btn-margin">
+                  <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;"> 
+                    Add To Cart
+                  </button>`
+
+    cardDetails.appendChild(cardButton);
 
 }   
 
