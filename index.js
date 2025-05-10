@@ -80,9 +80,10 @@ parentContainer.addEventListener("click", (event) => {
                 cartButton.innerHTML = `
                             <button class="button btn-primary btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin" data-id="${productId}">
                                 <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;"> 
-                             Go to Cart
+                             Remove From Cart
                             </button>
                             `;
+                localStorage.setItem("cart", JSON.stringify(cart));
                 
             }
         }
@@ -97,6 +98,7 @@ parentContainer.addEventListener("click", (event) => {
                             </button>
                             `;
             }
+            localStorage.setItem("cart", JSON.stringify(cart));
         }
     }
     
