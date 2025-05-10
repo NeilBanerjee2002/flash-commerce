@@ -9,6 +9,7 @@
 .material-icons-outlined {
     font-size: 24px; /* Set a consistent size */
     line-height: 1;
+    color: var(--primary-color);
  /* Prevent vertical misalignment */
 }
 .list-item-inline a {
