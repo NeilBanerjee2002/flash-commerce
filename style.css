@@ -5,6 +5,19 @@
 :root {
   --primary-color: #3143d0;
 }
+.search-bar i,
+.material-icons-outlined {
+    font-size: 24px; /* Set a consistent size */
+    line-height: 1;
+ /* Prevent vertical misalignment */
+}
+.list-item-inline a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Ensure a consistent clickable area */
+    height: 40px;
+}
 
 .heading {  
   background-color: var(--background-color);
@@ -19,11 +32,28 @@
   margin-bottom: 20px;
 }
 
+
+.d-flex{
+    gap: 20px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Optional: Adds some spacing */
+    list-style-type: none; /* Removes bullets */
+    margin: 0;
+    padding: 0;
+  }
+  
+
 .search-box-input {
   width: 18rem;
   padding-left: 2rem;
   font-size: 1rem;
-  border: none;
+  height: 2rem;
+  border-radius: 10px;
+  border: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
   background-color: transparent;
 }
