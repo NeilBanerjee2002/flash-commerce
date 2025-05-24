@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | British Imperial</title>
+    <meta name="author" content="Neil Banerjee">
+    <link rel="stylesheet" href="https://uilight.netlify.app/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <header class="heading d-flex grow-shrink-basis align-center">
+        <div class="heading-title-icon d-flex grow-shrink-basis align-center">
+            <img class="icon mr-1" src="assets/flag-of-uk.png" alt="lightbul">
+            <h1 class="heading-title">
+                <a class="link" href="/">British Imperial</a>
+            </h1>
+        </div>
+        <nav class="navigation">
+             <div class="search-bar d-flex align-center">
+                  <input type="text" class="search-box-input" placeholder="Search for products...">
+                  <button class="btn btn-primary">
+                       <i class="fa fa-search"></i>
+                     </button>
+              </div>
+            <ul class="list-non-bullet">
+                     <li class="list-item-inline">
+                  <a href="/" class="link cursor">
+                    <span class="material-icons-outlined">favorite_border</span>
+                  </a>
+                </li>
+                
+                <li class="list-item-inline">
+                    <a href="/cart.html" class="link cursor">
+                       <span class="material-icons-outlined">shopping_cart</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+  <div class="d-flex wrap gap margin" id="product"></div>
+ <script type="module" src="cart.js"></script>
+</body>
+</html>

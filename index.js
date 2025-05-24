@@ -2,7 +2,8 @@ import { products } from "./DB/product.js";
 
 const parentContainer = document.getElementById("product");
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 
 function isProductInCart(cart,productId) {
     const product = cart && cart.length>0 && cart.some((item) => item._id === productId);
@@ -19,6 +20,7 @@ for (let product of products){
         "shadow",
     );
     
+    
     const cardImage = document.createElement("img");
     cardImage.classList.add("card-image");
     cardImage.src = product.img;
@@ -26,12 +28,12 @@ for (let product of products){
     cardContainer.appendChild(cardImage);
     parentContainer.appendChild(cardContainer);
 
-    const cardDetails = document.createElement("div");
+    const cardDetails = document.createElement("div"); 
     cardDetails.classList.add("card-details");
     
     const cardTitle = document.createElement("div");
     cardTitle.classList.add("card-title");
-    cardTitle.innerText = "Premimum Collection";
+    cardTitle.innerText = `${product.name}`;
     cardDetails.appendChild(cardTitle);
     cardContainer.appendChild(cardDetails);
 
@@ -61,6 +63,48 @@ for (let product of products){
     </button>`;
 
     cardDetails.appendChild(cardButton);
-
+    cardButton.setAttribute("data-id", product._id);
+   
 }   
+
+// Attach event to the parent container
+parentContainer.addEventListener("click", (event) => {
+    // Make sure only the actual button triggers the event
+    const cartButton = event.target.closest(".cta-btn");
+
+    if (cartButton) {
+        const productId = cartButton.dataset.id;
+        const inCart = isProductInCart(cart, productId);
+
+        if (!inCart) {
+            const productAddtoCart = products.find((product) => product._id === productId);
+            if (productAddtoCart) {
+                cart.push(productAddtoCart);
+                cartButton.innerHTML = `
+                            <button class="button btn-primary btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin" data-id="${productId}">
+                                <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;"> 
+                             Remove From Cart
+                            </button>
+                            `;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                
+            }
+        }
+        else{
+            const productRemoveFromCart = products.find((product) => product._id === productId);
+            if (productRemoveFromCart) {
+                cart = cart.filter((item) => item._id !== productId);
+                cartButton.innerHTML = `
+                            <button class="button btn-primary btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin" data-id="${productId}">
+                                <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;"> 
+                             Add To Cart
+                            </button>
+                            `;
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    }
+    
+});
+
 
