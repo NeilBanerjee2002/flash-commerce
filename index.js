@@ -2,6 +2,13 @@ import { products } from "./DB/product.js";
 
 const parentContainer = document.getElementById("product");
 
+let cart = [];
+
+function isProductInCart(cart,productId) {
+    const product = cart && cart.length>0 && cart.some((item) => item._id === productId);
+    return product;
+}
+
 for (let product of products){
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card",
@@ -45,11 +52,13 @@ for (let product of products){
     cardDetails.appendChild(cardRating);
 
     const cardButton = document.createElement("div");
+    const isInCart = isProductInCart(cart, product._id);
     cardButton.classList.add("cta-btn");
-    cardButton.innerHTML = `<button class="button btn-primary btn-icon cart-btn d-flex                       align-center justify-center gap cursor btn-margin">
-                  <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;"> 
-                    Add To Cart
-                  </button>`
+    cardButton.innerHTML = `
+    <button class="button btn-primary btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="cart" style="width: 20px; height: 20px;">
+        ${isInCart ? 'Remove from Cart' : 'Add To Cart'}
+    </button>`;
 
     cardDetails.appendChild(cardButton);
 
